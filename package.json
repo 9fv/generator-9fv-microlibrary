@@ -1,6 +1,6 @@
 {
-  "name": "generator-9fv-microlibrary",
-  "version": "0.1.0-alpha1",
+  "name": "generator-node-microlibrary",
+  "version": "0.1.0-alpha2",
   "description": " A Yeoman generator to create a 9fv.io microlibrary. ",
   "main": "app/index.js",
   "scripts": {
