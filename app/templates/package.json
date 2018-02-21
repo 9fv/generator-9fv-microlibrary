@@ -45,7 +45,7 @@
     "require-dir": "^1.0.0",
     "should": "^13.2.1",
     "standard": "^11.0.0",
-    "github-uri-https-parser": "^0.1.0-alpha1"
+    "github-uri-https-parser": "^0.1.1-alpha1"
   },
   "dependencies": {
     "lodash": "^4.17.5"
