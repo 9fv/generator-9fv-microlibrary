@@ -9,8 +9,7 @@ gulp.task('docs-api', () => {
 })
 
 gulp.task('docs-readme', () => {
-  return g.docgen4NodeReadme.to('README.md')
-    .pipe(gulp.dest('./'))
+  return g.docgen4NodeReadme.to('README.md', path.resolve('.docgen4.yml')).pipe(gulp.dest('./'))
 })
 
 gulp.task('docs', ['docs-readme'])
