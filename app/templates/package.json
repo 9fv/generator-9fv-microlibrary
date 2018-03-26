@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/<%- github.username %>/<%- github.repository %>#readme",
   "devDependencies": {
+    "gulp-docgen4-node-readme": "*",
     "JSONPath": "^0.11.2",
     "coveralls": "^3.0.0",
     "current-git-branch": "^1.0.1",
