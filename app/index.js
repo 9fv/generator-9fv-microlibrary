@@ -24,7 +24,6 @@ class MicrolibraryGenerator extends Generator {
     this.version = '0.1.0-alpha1'
     this.github = {username: '', repository: this.name}
     this.author = {name: '', url: '', email: ''}
-    this.node = {version: '9.5.0'}
     this.coveralls = {token: ''}
   }
 
@@ -89,11 +88,6 @@ class MicrolibraryGenerator extends Generator {
       },
       {
         type: 'input',
-        name: 'nodeVersion',
-        message: `node version [${this.node.version}]`
-      },
-      {
-        type: 'input',
         name: 'coverallsToken',
         message: `coveralls token [${this.coveralls.token}]`
       }
@@ -117,9 +111,7 @@ class MicrolibraryGenerator extends Generator {
       this.author.name = r.authorName ? r.authorName : this.author.name
       this.author.url = r.authorUrl ? r.authorUrl : this.author.url
       this.author.email = r.authorEmail ? r.authorEmail : this.author.email
-      this.node.version = r.nodeVersion ? r.nodeVersion : this.node.version
       this.coveralls.token = r.coverallsToken ? r.coverallsToken : this.coveralls.token
-
       this.keywords = JSON.stringify(this.keywords.split(',').map(item => item.trim()))
     })
   }
@@ -139,8 +131,8 @@ class MicrolibraryGenerator extends Generator {
         const files = [
           'package.json',
           'lib/index.js',
-          '.gulp/configuration.json',
-          '.coveralls.yml'
+          '.coveralls.yml',
+          '.docgen4.yml'
         ]
 
         const copyOpts = this.docker
@@ -153,7 +145,6 @@ class MicrolibraryGenerator extends Generator {
         this.fs.copy(src, dest, copyOpts)
         this.fs.copy(this.templatePath('.*'), dest, copyOpts)
         this.fs.copy(this.templatePath('.gulp'), path.join(dest, '.gulp'), copyOpts)
-        this.fs.copy(this.templatePath('.templates'), path.join(dest, '.templates'), copyOpts)
 
         const opts = {
           name: this.name,
@@ -162,7 +153,6 @@ class MicrolibraryGenerator extends Generator {
           keywords: this.keywords,
           version: this.version,
           github: this.github,
-          node: this.node,
           author: this.author,
           coveralls: this.coveralls,
           year: new Date().getFullYear()
